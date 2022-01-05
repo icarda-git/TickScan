@@ -1,0 +1,17 @@
+body{
+    background-color:#0a3330;
+}
+.imgelength{
+  width: 350px;
+  height: 350px;   
+}
+
+.imghead{
+    color:yellow;
+    font-family: 'M PLUS 1p', sans-serif;
+}
+
+.main-head{
+    font-family: 'Amaranth', sans-serif;
+    color:white;
+}

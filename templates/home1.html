@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500&display=swap" rel="stylesheet">
+
+<title>Document</title>
+</head>
+<body>
+{% if messages %}
+{% for message in messages %}
+<script>
+alert('{{message}}');
+</script>
+{% endfor %}
+{% endif %}
+
+<div class="container-fluid">
+    <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow" style="background-color:#0a3330;">
+
+  </div>
+
+<div class="main-div">
+<div class="container-fluid mt-2 text-center">
+<h2 class="main-head text-center mb-4 mt-4"> Tick Object Detection And Classification</h2>
+<div class="row">
+
+<div class="col-md-6">
+<!--    <img src="{{path}}" class="imgelength"  style="width:90%;height:100%;border: 2px solid green ">-->
+    <img src="{{ path.path }}" class="imgelength"  style="width:90%;height:100%;border: 2px solid green ">
+     <small class="imghead" style="margin-left: 6%;"> Actual Image </small>
+</div>
+
+<div class="col-md-6">
+<!--    <img src=" {{a}}\{{b}}" alt=""  class="imgelength btnreset" onclick="enlargeImg();" ondblclick="resetImg()"   id="img2" style="width:90%;height:100%;border: 2px solid green">-->
+    <img src="{{ a.g }}" alt=""  class="imgelength btnreset" onclick="enlargeImg();" ondblclick="resetImg()"   id="img2" style="width:90%;height:100%;border: 2px solid green">
+
+    </div>
+    <small class="imghead" style="margin-left: 25%;"> Predicted Image </small>
+</div>
+</div>
+    <br><br>
+<div class="row">
+    <div class="col-md-12">
+<!--<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}-->
+    <div class="container mt-6">
+   <div class="row">
+      <div class="col-sm-4 text-white">
+   <label for="img" class="fw-bold">Upload Image</label><br>
+   <input type="file" class="form-control" id="img1" name="img">
+   </div>
+       <div>
+           <input type="submit" value="Submit"/>
+           </div>
+       <div>
+           <input type="submit" value="Submit1"/>
+           </div>
+<!--<div class="col-sm-3 mt-4">&ndash;&gt;
+  <button class="btn btn-info"> Submit  </button>
+    <input type="submit" value="Submit"/>
+      <button onclick="resetImg()" class="btnreset btn btn-danger">Reset Image</button>
+    </div>
+    </div>
+</div>-->
+<!--</form>-->
+        </div>
+<div class="col-sm-3 mt-4" style="display:none">
+<button onclick="resetImg()" class="btnreset btn btn-danger" style="margin-left:180%; margin-top:-30%;">Reset Image</button>
+</div>
+</div>
+    </div>
+
+
+</div>
+<script src=" {% static 'js/bootstrap.js' %} "></script>
+<script>
+let img = document.getElementById("img2");
+function enlargeImg() {
+    img.style.transform = "scale(2.0)";
+    img.style.transition = "transform 0.25s ease";
+      };
+
+function resetImg() {
+        // Set image size to original
+        img.style.transform = "scale(1)";
+        img.style.transition = "transform 0.25s ease";
+      }
+
+</script>
+
+</body>
+</html>
