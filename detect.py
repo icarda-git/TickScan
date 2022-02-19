@@ -1,3 +1,15 @@
+"""
+Usage:
+    $ python detect.py --model model_name --model_location model_path.pt --input_location image_path
+    
+model_name = [detr, ssd, fasterrcnn, yolov5, yolor, efficientdet]
+if yolov5 you  are in app/yolov5/:
+	model_path.pt & image_path should be relative paths
+
+
+"""
+
+
 import argparse
 import cv2
 import matplotlib.pyplot as plt
@@ -13,13 +25,11 @@ warnings.filterwarnings("ignore")
 if __name__ == '__main__':
     # intialize the parser
     parser = argparse.ArgumentParser(
-        description='Predict using tick detection models'
-    )
-    
+        description='Predict using tick detection models')
     # arguments
-    parser.add_argument('--model', help='Model to use for tick object detection [detr, ssd, fasterrcnn, yolov5, yolor, efficientdet]')
-    parser.add_argument('--model_location' help='location of pretrained model')
-    parser.add_argument('--input_location', help='location of input')
+    parser.add_argument('--model', type=str, help='Model to use for tick object detection [detr, ssd, fasterrcnn, yolov5, yolor, efficientdet]')
+    parser.add_argument('--model_location', type=str, help='location of pretrained model')
+    parser.add_argument('--input_location', type=str, help='location of input image')
     # parser.add_argument('--output_location', help='location of output')
     
     # Parse the arguments
@@ -28,6 +38,7 @@ if __name__ == '__main__':
     model_location = args.model_location
     input_location = args.input_location
     # output_location = args.output_location
+    
     
     if model=='detr':
         first_class_index = 1
@@ -111,9 +122,9 @@ if __name__ == '__main__':
         for path in paths.values():
             if not os.path.exists(path):
                 if os.name == 'posix':
-                    !mkdir -p {path}
+                	os.mkdir(path)
                 if os.name == 'nt':
-                    !mkdir {path}
+                    os.mkdir(path)
         
         import os
         import tensorflow as tf
@@ -140,7 +151,7 @@ if __name__ == '__main__':
         import cv2 
         import numpy as np
         from matplotlib import pyplot as plt
-        %matplotlib inline
+        #%matplotlib inline
         
         category_index = label_map_util.create_category_index_from_labelmap(files['LABELMAP'])
         
@@ -225,12 +236,17 @@ if __name__ == '__main__':
             
             
     elif model=='yolov5':
-        !cd yolov5
-        !python detect.py --source image_location --weights model_location --conf-thres 0.5
+    	import os
+    	#yolov5_path = 'icarda_yolov_zip/icarda_yolov/app/yolov5'
+    	yolov5_path = 'app/yolov5'
+    	os.chdir(yolov5_path)
+    	os.system('python detect.py --source ' + input_location + ' --weights ' + model_location)
         
     elif model=='yolor':
-        !cd yolor
-        !python detect.py --source image_location --cfg cfg/yolor_p6.cfg --weights model_location --conf 0.5 --img-size 640 --device 0
+    	import os
+    	yolor_path = ''
+    	os.chdi(yolor_path)
+    	os.system('python detect.py --source '+ image_location +' --weights ' + model_location)
     
     elif model=='efficientdet':
         CUSTOM_MODEL_NAME = 'efficientdet' 
@@ -255,11 +271,11 @@ if __name__ == '__main__':
              }
              
         for path in paths.values():
-            if not os.path.exists(path):
-                if os.name == 'posix':
-                    !mkdir -p {path}
-                if os.name == 'nt':
-                    !mkdir {path}
+          if not os.path.exists(path):
+            if os.name == 'posix':
+              os.mkdir(path)
+            if os.name == 'nt':
+              os.mkdir(path)
         
         import os
         import tensorflow as tf
@@ -286,7 +302,7 @@ if __name__ == '__main__':
         import cv2 
         import numpy as np
         from matplotlib import pyplot as plt
-        %matplotlib inline
+        #%matplotlib inline
         
         category_index = label_map_util.create_category_index_from_labelmap(files['LABELMAP'])
         
