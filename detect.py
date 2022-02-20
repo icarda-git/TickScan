@@ -21,6 +21,7 @@ if __name__ == '__main__':
     parser.add_argument('--model', help='Model to use for tick object detection [detr, ssd, fasterrcnn, yolov5, yolor, efficientdet]')
     parser.add_argument('--model_location', help='location of pretrained model')
     parser.add_argument('--input_location', help='location of input')
+    parser.add_argument('--conf', help='confidence threshold', default=0.5)
     # parser.add_argument('--output_location', help='location of output')
     
     # Parse the arguments
@@ -28,13 +29,14 @@ if __name__ == '__main__':
     model = args.model
     model_location = args.model_location
     input_location = args.input_location
+    conf = args.conf
     # output_location = args.output_location
     
             
             
     if model=='yolov5':
         os.chdir(os.getcwd()+'/yolov5')
-        os.system(f'python detect.py --source {input_location} --weights {model_location} --conf-thres {0.5} --exist-ok')
+        os.system(f'python detect.py --source {input_location} --weights {model_location} --conf-thres {conf} --exist-ok')
 
     else:
         print('Model does not exist')
