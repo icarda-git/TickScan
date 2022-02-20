@@ -34,7 +34,7 @@ if __name__ == '__main__':
             
     if model=='yolov5':
         os.chdir(os.getcwd()+'/yolov5')
-        os.system(f'python detect.py --source {input_location} --weights {model_location} --conf-thres {0.5}')
+        os.system(f'python detect.py --source {input_location} --weights {model_location} --conf-thres {0.5} --exist-ok')
 
     else:
         print('Model does not exist')
