@@ -5,7 +5,7 @@ YOLOv5 model achieved the best detection performance in both tick sexes with an 
 
 This work has been developed and implemented by:
 Sayed Zamiti (ENMV sidi thabet)
-Amine Mosbah (ENMV sidi thabet, IBiotek)
+Amine Mosbah (ENMV sidi thabet)
 Mourad Ben Said (ENMV sidi thabet)
 Sajid Ali (Freelancer)
 Moez Mhadhbi (ENMV sidithabet)
